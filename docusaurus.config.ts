@@ -11,8 +11,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: "https://foxses-studio.github.io",
-  baseUrl: "/foxses-pay/",
+  url: "https://paydoc.foxses.com",
+  baseUrl: "/",
 
   organizationName: "Foxses-Studio",
   projectName: "foxses-pay",
