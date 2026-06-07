@@ -1,135 +1,66 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 import styles from "./index.module.css";
+import { motion } from "framer-motion";
+import SplitText from "../components/SplitText";
+import { FiCopy, FiCheck } from "react-icons/fi";
+import WhatIsFoxsesPay from "../components/WhatIsFoxsesPay";
+import SupportedProviders from "../components/SupportedProviders";
+import WhyFoxsesPay from "../components/WhyFoxsesPay";
 
 function Hero() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("npm install @foxses/pay");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className={styles.hero}>
-      <div className={styles.heroInner}>
-        <div className={styles.badge}>Open Source · MIT License</div>
-        <Heading as="h1" className={styles.heroTitle}>
-          <span className={styles.brand}>foxses</span>
-          <span className={styles.brandPay}>-pay</span>
-        </Heading>
-        <p className={styles.heroSubtitle}>
-          One API for <strong>Stripe</strong>, <strong>bKash</strong>,{" "}
-          <strong>Nagad</strong>, <strong>SSLCommerz</strong> and more.
-          <br />
-          Install once. Configure once. Accept payments everywhere.
+    <section className={styles.heroSection}>
+      {/* Dashed Grid Background */}
+      <div className={styles.heroGridBg}></div>
+      {/* Decorative dashed circle markers */}
+      <div className={styles.heroCircleMarker1}></div>
+      <div className={styles.heroCircleMarker2}></div>
+
+      <div className={styles.heroContent}>
+        <h1 className={styles.heroMainTitle}>
+          The Unified Payment Engine for the Web
+        </h1>
+        <p className={styles.heroSubTitle}>
+          Connect bKash, Nagad, SSLCommerz, and Stripe in minutes. <br className={styles.desktopOnly} />
+          Write once, accept payments anywhere.
         </p>
-        <div className={styles.installBox}>
-          <code>npm install @foxses/pay</code>
-        </div>
-        <div className={styles.heroButtons}>
-          <Link className={styles.btnPrimary} to="/docs/getting-started">
-            Get Started →
+
+        <div className={styles.heroActionButtons}>
+          <Link className={styles.heroBtnPrimary} to="/docs/getting-started">
+            Get Started
           </Link>
-          <Link className={styles.btnSecondary} to="https://github.com/Foxses-Studio/foxses-pay">
+          <Link className={styles.heroBtnSecondary} to="https://github.com/Foxses-Studio/foxses-pay">
             View on GitHub
           </Link>
         </div>
-      </div>
-    </div>
-  );
-}
 
-function CodeDemo() {
-  return (
-    <div className={styles.codeSection}>
-      <div className={styles.container}>
-        <Heading as="h2" className={styles.sectionTitle}>As simple as it gets</Heading>
-        <p className={styles.sectionSubtitle}>Same three functions — any provider.</p>
-        <div className={styles.codeBlock}>
-          <pre>{`import { configure, createPayment, verifyPayment, refund } from "@foxses/pay";
-
-// Configure once
-configure({
-  bkash: { appKey: "...", secretKey: "...", username: "...", password: "...",
-           callbackUrl: "https://yoursite.com/callback",
-           successUrl: "https://yoursite.com/success",
-           failureUrl: "https://yoursite.com/failure" },
-  stripe: { apiKey: "sk_test_...",
-            successUrl: "https://yoursite.com/success",
-            failureUrl: "https://yoursite.com/cancel" },
-});
-
-// Create payment — same API for every provider
-const payment = await createPayment("bkash", {
-  amount: 500, currency: "BDT", orderId: "ORDER-001",
-});
-// redirect user to → payment.checkoutUrl
-
-// Verify after callback
-const result = await verifyPayment("bkash", { transactionId: paymentID });
-// result.status === "completed"
-
-// Refund
-const refunded = await refund("bkash", { transactionId: result.transactionId, amount: 500 });`}</pre>
+        <div className={styles.copyWidgetContainer}>
+          <div 
+            className={`${styles.copyCommandWidget} ${copied ? styles.copiedActive : ""}`} 
+            onClick={handleCopy}
+            title="Click to copy command"
+          >
+            <span className={styles.widgetPrompt}>▲ ~</span>
+            <code className={styles.widgetCode}>npm install @foxses/pay</code>
+            <span className={styles.copyFeedback}>
+              {copied ? <FiCheck size={14} /> : <FiCopy size={14} />}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-const providers = [
-  { name: "bKash", region: "🇧🇩 Bangladesh", description: "Tokenized Checkout API v1.2.0 — token-based auth, auto refresh.", install: "@foxses/pay-bkash" },
-  { name: "Nagad", region: "🇧🇩 Bangladesh", description: "Checkout API v0.2.0 — RSA encryption for all sensitive data.", install: "@foxses/pay-nagad" },
-  { name: "SSLCommerz", region: "🇧🇩 Bangladesh", description: "Payment Gateway API v4 — all Bangladeshi cards & mobile banking.", install: "@foxses/pay-sslcommerz" },
-  { name: "Stripe", region: "🌍 Global", description: "Checkout Session API — 135+ currencies, card payments, webhooks.", install: "@foxses/pay-stripe" },
-];
-
-function Providers() {
-  return (
-    <div className={styles.providersSection}>
-      <div className={styles.container}>
-        <Heading as="h2" className={styles.sectionTitle}>Supported Providers</Heading>
-        <p className={styles.sectionSubtitle}>Each provider is a separate package — install only what you need.</p>
-        <div className={styles.providersGrid}>
-          {providers.map((p) => (
-            <div key={p.name} className={styles.providerCard}>
-              <div className={styles.providerHeader}>
-                <span className={styles.providerName}>{p.name}</span>
-                <span className={styles.providerRegion}>{p.region}</span>
-                <span className={styles.stableBadge}>Stable</span>
-              </div>
-              <p className={styles.providerDesc}>{p.description}</p>
-              <code className={styles.providerInstall}>npm i {p.install}</code>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const features = [
-  { icon: "⚡", title: "Simple API", description: "Three functions — createPayment, verifyPayment, refund. No provider-specific code in your business logic." },
-  { icon: "🔌", title: "Modular", description: "Install only the providers you need. @foxses/pay includes all. Or mix-and-match individual packages." },
-  { icon: "🔒", title: "Type Safe", description: "Full TypeScript support with strict types. Autocomplete for config, params, and responses." },
-  { icon: "🛡️", title: "Error Handling", description: "Typed errors — AuthenticationError, ValidationError, NetworkError, ProviderError." },
-  { icon: "🔄", title: "Unified Response", description: "Every provider returns the same PaymentResponse shape. No provider-specific parsing needed." },
-  { icon: "🚀", title: "Switch Providers", description: "Change provider in one line. Your business logic stays the same." },
-];
-
-function Features() {
-  return (
-    <div className={styles.featuresSection}>
-      <div className={styles.container}>
-        <Heading as="h2" className={styles.sectionTitle}>Why foxses-pay?</Heading>
-        <div className={styles.featuresGrid}>
-          {features.map((f) => (
-            <div key={f.title} className={styles.featureCard}>
-              <div className={styles.featureIcon}>{f.icon}</div>
-              <Heading as="h3" className={styles.featureTitle}>{f.title}</Heading>
-              <p className={styles.featureDesc}>{f.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }
 
@@ -139,9 +70,9 @@ export default function Home(): ReactNode {
     <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <main>
         <Hero />
-        <CodeDemo />
-        <Providers />
-        <Features />
+        <WhatIsFoxsesPay />
+        <SupportedProviders />
+        <WhyFoxsesPay />
       </main>
     </Layout>
   );

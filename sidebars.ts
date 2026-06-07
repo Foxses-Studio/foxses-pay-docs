@@ -5,6 +5,7 @@ const sidebars: SidebarsConfig = {
     { type: "doc", id: "getting-started", label: "Getting Started" },
     { type: "doc", id: "api-reference", label: "API Reference" },
     { type: "doc", id: "error-handling", label: "Error Handling" },
+    { type: "doc", id: "design-guidelines", label: "Design Guidelines" },
     {
       type: "category",
       label: "Providers",

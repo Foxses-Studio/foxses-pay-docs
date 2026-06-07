@@ -1,27 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
 :root {
-  --ifm-color-primary: #6366f1;
-  --ifm-color-primary-dark: #4f52ef;
-  --ifm-color-primary-darker: #4346ee;
-  --ifm-color-primary-darkest: #2325eb;
-  --ifm-color-primary-light: #777af3;
-  --ifm-color-primary-lighter: #8386f4;
-  --ifm-color-primary-lightest: #a5a7f8;
+  --ifm-font-family-base: 'Nunito', sans-serif;
+  --ifm-heading-font-family: 'Nunito', sans-serif;
+  --ifm-global-radius: 8px;
+
+  --ifm-color-primary: #f4a03c;
+  --ifm-color-primary-dark: #db8d2f;
+  --ifm-color-primary-darker: #cc832c;
+  --ifm-color-primary-darkest: #a86c24;
+  --ifm-color-primary-light: #f5ad57;
+  --ifm-color-primary-lighter: #f6b76e;
+  --ifm-color-primary-lightest: #f8c991;
   --ifm-code-font-size: 90%;
   --ifm-navbar-background-color: #0f0f23;
-  --ifm-navbar-shadow: 0 1px 0 rgba(99, 102, 241, 0.2);
-  --docusaurus-highlighted-code-line-bg: rgba(99, 102, 241, 0.1);
+  --ifm-navbar-shadow: 0 1px 0 rgba(244, 160, 60, 0.2);
+  --docusaurus-highlighted-code-line-bg: rgba(244, 160, 60, 0.1);
 }
 
 [data-theme='light'] {
   --ifm-navbar-background-color: #ffffff;
-  --ifm-navbar-shadow: 0 1px 0 rgba(99, 102, 241, 0.15);
+  --ifm-navbar-shadow: 0 1px 0 rgba(244, 160, 60, 0.15);
 }
 
 /* Navbar brand */
 .navbar__title {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.1rem;
-  color: #6366f1;
+  color: #f4a03c;
 }
 
 /* Navbar links */
@@ -31,11 +37,102 @@
 
 /* Sidebar active item */
 .menu__link--active {
-  color: #6366f1 !important;
+  color: #f4a03c !important;
   font-weight: 700;
 }
 
 /* Code blocks */
 .prism-code {
-  border-radius: 10px !important;
+  border-radius: var(--ifm-global-radius) !important;
 }
+
+/* SweetAlert border radius override */
+.swal2-dark-border-radius-override {
+  border-radius: var(--ifm-global-radius) !important;
+}
+
+/* ── Custom Footer Styling ──────────────────────── */
+.footer {
+  background-color: #05050c !important; /* Pitch dark matching the landing page theme */
+  border-top: 1px solid rgba(244, 160, 60, 0.08) !important;
+  padding: 5rem 2rem 3rem !important;
+}
+
+/* Footer titles (Docs, Providers, More) */
+.footer__title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 1.25rem !important;
+  position: relative;
+  display: inline-block;
+}
+
+/* Orange accent underline for the footer column titles */
+.footer__title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  background-color: #f4a03c;
+  border-radius: 1px;
+}
+
+/* Footer links */
+.footer__link-item {
+  color: #64748b !important;
+  font-size: 0.88rem !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-block;
+  text-decoration: none !important;
+}
+
+.footer__link-item:hover {
+  color: #f4a03c !important;
+  transform: translateX(3px) !important; /* Subtle slide interaction on hover */
+}
+
+/* Footer copyright section */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
+  padding-top: 2rem !important;
+  margin-top: 3rem !important;
+  text-align: center !important;
+}
+
+.footer__copyright {
+  color: #475569 !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+}
+
+/* Light mode support for footer */
+[data-theme='light'] .footer {
+  background-color: #fffcf8 !important;
+  border-top-color: rgba(244, 160, 60, 0.12) !important;
+}
+
+[data-theme='light'] .footer__title {
+  color: #0f0f23 !important;
+}
+
+[data-theme='light'] .footer__link-item {
+  color: #475569 !important;
+}
+
+[data-theme='light'] .footer__link-item:hover {
+  color: #cc832c !important;
+}
+
+[data-theme='light'] .footer__bottom {
+  border-top-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme='light'] .footer__copyright {
+  color: #8c9ba5 !important;
+}
+

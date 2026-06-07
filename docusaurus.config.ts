@@ -5,7 +5,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "foxses-pay",
   tagline: "One API for Stripe, bKash, Nagad, SSLCommerz and more.",
-  favicon: "img/favicon.ico",
+  favicon: "img/foxses.png",
 
   future: {
     v4: true,
@@ -44,13 +44,14 @@ const config: Config = {
   themeConfig: {
     colorMode: {
       defaultMode: "dark",
-      respectPrefersColorScheme: true,
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
     },
     navbar: {
       title: "foxses-pay",
       logo: {
         alt: "foxses-pay logo",
-        src: "img/logo.svg",
+        src: "img/foxses.png",
       },
       items: [
         {
