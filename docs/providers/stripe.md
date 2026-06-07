@@ -1,29 +1,35 @@
-﻿---
+---
 id: stripe
 title: Stripe
 sidebar_position: 4
 ---
 
-Stripe Checkout Session integration â€” global card payments.
+Stripe Checkout Session integration — global card payments.
+
+## Installation
+
+```bash
+npm install @foxses/pay-stripe
+```
 
 ## How It Works
 
 Stripe uses a hosted Checkout page:
 
-1. **Create Session** â€” POST to Stripe API â†’ get `url` (Stripe hosted checkout page)
+1. **Create Session** — POST to Stripe API → get `url` (Stripe hosted checkout page)
 2. **Redirect** user to the Stripe checkout URL
 3. **User pays** with card on Stripe's hosted page
-4. **Redirect back** â€” Stripe redirects to your `successUrl` with `?session_id=cs_xxx`
-5. **Verify** â€” retrieve session from Stripe to confirm payment
+4. **Redirect back** — Stripe redirects to your `successUrl` with `?session_id=cs_xxx`
+5. **Verify** — retrieve session from Stripe to confirm payment
 
 ## Configuration
 
 ```ts
 gateway.use("stripe", {
-  apiKey: "sk_test_YOUR_SECRET_KEY",          // required â€” Stripe secret key
-  webhookSecret: "whsec_YOUR_WEBHOOK_SECRET", // optional â€” for webhook verification
+  apiKey: "sk_test_YOUR_SECRET_KEY",          // required — Stripe secret key
+  webhookSecret: "whsec_YOUR_WEBHOOK_SECRET", // optional — for webhook verification
   successUrl: "https://yoursite.com/payment/success", // required
-  failureUrl: "https://yoursite.com/payment/cancel",  // required â€” cancel URL
+  failureUrl: "https://yoursite.com/payment/cancel",  // required — cancel URL
   sandbox: true,                               // optional, default: true
 });
 ```
@@ -42,12 +48,12 @@ gateway.use("stripe", {
 
 ```ts
 const payment = await gateway.createPayment("stripe", {
-  amount: 29.99,                       // required â€” supports decimals (USD, EUR etc.)
-  currency: "USD",                     // required â€” any Stripe-supported currency
-  orderId: "ORDER-001",                // required â€” saved as client_reference_id
-  customerEmail: "user@example.com",  // optional â€” pre-fills email on checkout
+  amount: 29.99,                       // required — supports decimals (USD, EUR etc.)
+  currency: "USD",                     // required — any Stripe-supported currency
+  orderId: "ORDER-001",                // required — saved as client_reference_id
+  customerEmail: "user@example.com",  // optional — pre-fills email on checkout
   metadata: {
-    productName: "Pro Plan",          // optional â€” shown on checkout page
+    productName: "Pro Plan",          // optional — shown on checkout page
     productDescription: "Monthly",   // optional
   },
 });
@@ -72,14 +78,14 @@ Call after Stripe redirects to your `successUrl` with `?session_id=cs_xxx`.
 ```ts
 const verified = await gateway.verifyPayment("stripe", {
   transactionId: sessionId, // from query: ?session_id=cs_xxx
-  amount: 29.99,            // optional â€” validates amount to prevent tampering
+  amount: 29.99,            // optional — validates amount to prevent tampering
 });
 ```
 
 **Response:**
 ```ts
 {
-  transactionId: "pi_xxx",  // Payment Intent ID â€” save for refunds
+  transactionId: "pi_xxx",  // Payment Intent ID — save for refunds
   provider: "stripe",
   amount: 29.99,
   currency: "USD",
@@ -101,7 +107,7 @@ const status = await gateway.getPaymentStatus("stripe", "pi_INTENT_ID");
 
 ## Refund Payment
 
-**Requires Payment Intent ID** (`pi_xxx`) â€” from the `verifyPayment` response.
+**Requires Payment Intent ID** (`pi_xxx`) — from the `verifyPayment` response.
 
 ```ts
 // Full refund
@@ -135,7 +141,7 @@ Stripe sends server-to-server events to your webhook URL. This is more reliable 
 
 ### Setup
 
-1. Go to [Stripe Dashboard â†’ Webhooks](https://dashboard.stripe.com/webhooks)
+1. Go to [Stripe Dashboard → Webhooks](https://dashboard.stripe.com/webhooks)
 2. Add endpoint: `https://yoursite.com/stripe/webhook`
 3. Select event: `checkout.session.completed`
 4. Copy the signing secret (`whsec_xxx`) to your config
@@ -143,7 +149,7 @@ Stripe sends server-to-server events to your webhook URL. This is more reliable 
 ### Handler
 
 ```ts
-// Express â€” IMPORTANT: use raw body, not JSON-parsed body
+// Express — IMPORTANT: use raw body, not JSON-parsed body
 app.post(
   "/stripe/webhook",
   express.raw({ type: "application/json" }),
@@ -232,6 +238,6 @@ Full list: [stripe.com/docs/currencies](https://stripe.com/docs/currencies)
 
 ## Credentials
 
-Get from [Stripe Dashboard â†’ Developers â†’ API keys](https://dashboard.stripe.com/apikeys)
+Get from [Stripe Dashboard → Developers → API keys](https://dashboard.stripe.com/apikeys)
 
 

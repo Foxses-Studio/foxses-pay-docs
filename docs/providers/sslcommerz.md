@@ -1,4 +1,4 @@
-﻿---
+---
 id: sslcommerz
 title: SSLCommerz
 sidebar_position: 3
@@ -6,15 +6,21 @@ sidebar_position: 3
 
 SSLCommerz Payment Gateway API v4 integration.
 
+## Installation
+
+```bash
+npm install @foxses/pay-sslcommerz
+```
+
 ## How It Works
 
 SSLCommerz uses a session-based redirect flow:
 
-1. **Init Session** â€” POST credentials + order info â†’ get `GatewayPageURL`
+1. **Init Session** — POST credentials + order info → get `GatewayPageURL`
 2. **Redirect** user to `GatewayPageURL` to choose payment method and pay
-3. **Callback** â€” SSLCommerz redirects to `success_url` / `fail_url` / `cancel_url` with `val_id`
-4. **Validate** â€” GET request with `val_id` to confirm payment is genuine
-5. **IPN** â€” Server-to-server notification to `ipn_url` (optional but recommended)
+3. **Callback** — SSLCommerz redirects to `success_url` / `fail_url` / `cancel_url` with `val_id`
+4. **Validate** — GET request with `val_id` to confirm payment is genuine
+5. **IPN** — Server-to-server notification to `ipn_url` (optional but recommended)
 
 ## Configuration
 
@@ -25,7 +31,7 @@ gateway.use("sslcommerz", {
   successUrl: "https://yoursite.com/payment/success", // required
   failureUrl: "https://yoursite.com/payment/failure", // required
   cancelUrl: "https://yoursite.com/payment/cancel",   // required
-  callbackUrl: "https://yoursite.com/payment/ipn",    // optional â€” IPN URL
+  callbackUrl: "https://yoursite.com/payment/ipn",    // optional — IPN URL
   sandbox: true,                             // optional, default: true
 });
 ```
@@ -45,8 +51,8 @@ gateway.use("sslcommerz", {
 ```ts
 const payment = await gateway.createPayment("sslcommerz", {
   amount: 500,                          // required
-  currency: "BDT",                      // required â€” BDT, USD, EUR, etc.
-  orderId: "ORDER-001",                 // required â€” unique (30 chars max)
+  currency: "BDT",                      // required — BDT, USD, EUR, etc.
+  orderId: "ORDER-001",                 // required — unique (30 chars max)
   customerName: "John Doe",            // optional
   customerEmail: "john@example.com",   // optional
   customerPhone: "01700000000",         // optional
@@ -54,7 +60,7 @@ const payment = await gateway.createPayment("sslcommerz", {
     productName: "T-Shirt",            // optional
     productCategory: "clothing",       // optional
     productProfile: "physical-goods",  // optional
-    value_a: "custom-data-1",          // optional â€” echoed back in callback
+    value_a: "custom-data-1",          // optional — echoed back in callback
     value_b: "custom-data-2",          // optional
   },
 });
@@ -83,7 +89,7 @@ Always pass `amount` to detect response tampering.
 ```ts
 const verified = await gateway.verifyPayment("sslcommerz", {
   transactionId: val_id, // from query param: ?val_id=XXX
-  amount: 500,           // recommended â€” validates amount matches
+  amount: 500,           // recommended — validates amount matches
 });
 ```
 
@@ -92,7 +98,7 @@ const verified = await gateway.verifyPayment("sslcommerz", {
 **Response:**
 ```ts
 {
-  transactionId: "BANK_TRX_ID",  // bank_tran_id â€” save this for refunds
+  transactionId: "BANK_TRX_ID",  // bank_tran_id — save this for refunds
   provider: "sslcommerz",
   amount: 500,
   currency: "BDT",

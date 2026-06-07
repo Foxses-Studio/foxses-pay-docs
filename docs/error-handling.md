@@ -14,7 +14,7 @@ foxses-pay throws typed errors so you can handle each case precisely.
 | `ValidationError` | `VALIDATION_ERROR` | Missing required params, invalid amount, wrong format |
 | `NetworkError` | `NETWORK_ERROR` | HTTP failure, timeout, DNS error |
 | `ProviderError` | `PROVIDER_ERROR` | Provider returned an error response |
-| `PaymentError` | `PAYMENT_ERROR` | Base class â€” catch all payment errors |
+| `PaymentError` | `PAYMENT_ERROR` | Base class — catch all payment errors |
 
 All extend `PaymentError` which extends `Error`.
 
@@ -33,7 +33,7 @@ try {
   const payment = await gateway.createPayment("bkash", params);
 } catch (err) {
   if (err instanceof AuthenticationError) {
-    // Credentials wrong â€” check your API keys
+    // Credentials wrong — check your API keys
     console.error("Auth failed:", err.message);
     console.error("Provider:", err.provider); // "bkash"
 
@@ -42,7 +42,7 @@ try {
     console.error("Validation:", err.message);
 
   } else if (err instanceof NetworkError) {
-    // Could not reach the provider â€” retry or alert
+    // Could not reach the provider — retry or alert
     console.error("Network issue:", err.message);
 
   } else if (err instanceof ProviderError) {
@@ -92,12 +92,12 @@ err.stack     // stack trace
 | Error | Cause | Fix |
 |-------|-------|-----|
 | `ProviderError: FAILED` | Wrong storeId/storePassword | Check store credentials |
-| `ProviderError: amount mismatch` | Response amount differs from expected | Possible tampered response â€” do not fulfill order |
+| `ProviderError: amount mismatch` | Response amount differs from expected | Possible tampered response — do not fulfill order |
 | `ProviderError: INVALID_TRANSACTION` | val_id does not exist or expired | Do not fulfill order |
 
 ## Retry Strategy
 
-Retry only `NetworkError` â€” never retry `ProviderError` or `ValidationError`.
+Retry only `NetworkError` — never retry `ProviderError` or `ValidationError`.
 
 ```ts
 async function createPaymentWithRetry(

@@ -1,4 +1,4 @@
-﻿---
+---
 id: nagad
 title: Nagad
 sidebar_position: 2
@@ -6,15 +6,21 @@ sidebar_position: 2
 
 Nagad Checkout API v0.2.0 integration with RSA encryption.
 
+## Installation
+
+```bash
+npm install @foxses/pay-nagad
+```
+
 ## How It Works
 
 Nagad uses RSA encryption for all sensitive data exchange:
 
-1. **Initialize** â€” encrypt merchant info with Nagad's public key â†’ get `paymentReferenceId`
-2. **Complete** â€” encrypt order details â†’ get `callBackUrl` (checkout URL)
+1. **Initialize** — encrypt merchant info with Nagad's public key → get `paymentReferenceId`
+2. **Complete** — encrypt order details → get `callBackUrl` (checkout URL)
 3. **Redirect** user to `callBackUrl` to pay on Nagad
-4. **Callback** â€” Nagad calls your `callbackUrl` with `payment_ref_id`
-5. **Verify** â€” GET request to confirm payment status
+4. **Callback** — Nagad calls your `callbackUrl` with `payment_ref_id`
+5. **Verify** — GET request to confirm payment status
 
 `createPayment()` handles steps 1 and 2 automatically.
 
@@ -45,9 +51,9 @@ Download Nagad's public key from the portal.
 ```ts
 gateway.use("nagad", {
   merchantId: "YOUR_MERCHANT_ID",            // required
-  merchantNumber: "01XXXXXXXXX",             // required â€” Nagad merchant number
-  privateKey: "YOUR_RSA_PRIVATE_KEY",        // required â€” base64 or PEM
-  nagadPublicKey: "NAGAD_RSA_PUBLIC_KEY",    // required â€” base64 or PEM
+  merchantNumber: "01XXXXXXXXX",             // required — Nagad merchant number
+  privateKey: "YOUR_RSA_PRIVATE_KEY",        // required — base64 or PEM
+  nagadPublicKey: "NAGAD_RSA_PUBLIC_KEY",    // required — base64 or PEM
   callbackUrl: "https://yoursite.com/nagad/callback", // required
   successUrl: "https://yoursite.com/payment/success", // required
   failureUrl: "https://yoursite.com/payment/failure", // required
@@ -70,7 +76,7 @@ const payment = await gateway.createPayment("nagad", {
   currency: "BDT",
   orderId: "ORDER-001",          // must be unique
   metadata: {
-    ip: "CLIENT_IP_ADDRESS",    // required â€” customer's IP address
+    ip: "CLIENT_IP_ADDRESS",    // required — customer's IP address
   },
 });
 ```
@@ -80,7 +86,7 @@ const payment = await gateway.createPayment("nagad", {
 **Response:**
 ```ts
 {
-  transactionId: "NAG-REF-XXX", // paymentReferenceId â€” save this
+  transactionId: "NAG-REF-XXX", // paymentReferenceId — save this
   provider: "nagad",
   amount: 500,
   currency: "BDT",

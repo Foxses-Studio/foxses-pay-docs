@@ -53,13 +53,13 @@ gateway.createPayment(
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `amount` | `number` | âœ… | Payment amount (must be > 0) |
-| `currency` | `string` | âœ… | Currency code e.g. `"BDT"` |
-| `orderId` | `string` | âœ… | Unique order/transaction ID |
-| `customerName` | `string` | âŒ | Customer full name |
-| `customerEmail` | `string` | âŒ | Customer email |
-| `customerPhone` | `string` | âŒ | Customer phone number |
-| `metadata` | `Record<string, unknown>` | âŒ | Provider-specific extra data |
+| `amount` | `number` | ✅ | Payment amount (must be > 0) |
+| `currency` | `string` | ✅ | Currency code e.g. `"BDT"` |
+| `orderId` | `string` | ✅ | Unique order/transaction ID |
+| `customerName` | `string` | ❌ | Customer full name |
+| `customerEmail` | `string` | ❌ | Customer email |
+| `customerPhone` | `string` | ❌ | Customer phone number |
+| `metadata` | `Record<string, unknown>` | ❌ | Provider-specific extra data |
 
 ---
 
@@ -78,9 +78,9 @@ gateway.verifyPayment(
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `transactionId` | `string` | âœ… | Provider's payment/transaction ID |
-| `orderId` | `string` | âŒ | Your order ID |
-| `amount` | `number` | âŒ | Expected amount (for validation) |
+| `transactionId` | `string` | ✅ | Provider's payment/transaction ID |
+| `orderId` | `string` | ❌ | Your order ID |
+| `amount` | `number` | ❌ | Expected amount (for validation) |
 
 ---
 
@@ -112,9 +112,9 @@ gateway.refundPayment(
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `transactionId` | `string` | âœ… | Provider's transaction ID |
-| `amount` | `number` | âŒ | Refund amount (partial refund if less than original) |
-| `reason` | `string` | âŒ | Reason for refund |
+| `transactionId` | `string` | ✅ | Provider's transaction ID |
+| `amount` | `number` | ❌ | Refund amount (partial refund if less than original) |
+| `reason` | `string` | ❌ | Reason for refund |
 
 ---
 

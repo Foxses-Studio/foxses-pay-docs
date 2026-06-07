@@ -1,4 +1,4 @@
-﻿---
+---
 id: bkash
 title: bKash
 sidebar_position: 1
@@ -6,15 +6,21 @@ sidebar_position: 1
 
 bKash Tokenized Checkout API v1.2.0-beta integration.
 
+## Installation
+
+```bash
+npm install @foxses/pay-bkash
+```
+
 ## How It Works
 
 bKash Tokenized Checkout uses a token-based system:
 
-1. **Grant Token** â€” exchange app credentials for an `id_token` (auto-managed)
-2. **Create Payment** â€” get a `bkashURL` and `paymentID`
+1. **Grant Token** — exchange app credentials for an `id_token` (auto-managed)
+2. **Create Payment** — get a `bkashURL` and `paymentID`
 3. **Redirect** user to `bkashURL` to pay on bKash
-4. **Callback** â€” bKash calls your `callbackUrl` with `paymentID` and `status`
-5. **Execute Payment** â€” confirm the payment using `paymentID`
+4. **Callback** — bKash calls your `callbackUrl` with `paymentID` and `status`
+5. **Execute Payment** — confirm the payment using `paymentID`
 
 ## Configuration
 
@@ -50,10 +56,10 @@ Tokens are cached in memory and auto-refreshed 60 seconds before expiry (1 hour 
 
 ```ts
 const payment = await gateway.createPayment("bkash", {
-  amount: 500,                  // required â€” BDT amount
+  amount: 500,                  // required — BDT amount
   currency: "BDT",              // required
-  orderId: "ORDER-001",         // required â€” unique order ID
-  customerPhone: "01700000000", // optional â€” used as payerReference
+  orderId: "ORDER-001",         // required — unique order ID
+  customerPhone: "01700000000", // optional — used as payerReference
 });
 ```
 

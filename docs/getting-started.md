@@ -12,13 +12,13 @@ npm install foxses-pay
 
 ## Setup
 
-### Step 1 â€” Import the gateway
+### Step 1 — Import the gateway
 
 ```ts
 import { PaymentGateway } from "foxses-pay";
 ```
 
-### Step 2 â€” Import provider(s) you need
+### Step 2 — Import provider(s) you need
 
 Each provider must be imported so it registers itself. Do this once at your app entry point.
 
@@ -28,7 +28,7 @@ import "foxses-pay/providers/nagad";
 import "foxses-pay/providers/sslcommerz";
 ```
 
-### Step 3 â€” Create the gateway and configure providers
+### Step 3 — Create the gateway and configure providers
 
 ```ts
 const gateway = new PaymentGateway();
@@ -45,7 +45,7 @@ gateway.use("bkash", {
 });
 ```
 
-### Step 4 â€” Create a payment
+### Step 4 — Create a payment
 
 ```ts
 const payment = await gateway.createPayment("bkash", {
@@ -59,7 +59,7 @@ const payment = await gateway.createPayment("bkash", {
 console.log(payment.checkoutUrl);
 ```
 
-### Step 5 â€” Verify payment
+### Step 5 — Verify payment
 
 After the user pays, your callback URL receives a request. Verify the payment:
 
@@ -69,7 +69,7 @@ const verified = await gateway.verifyPayment("bkash", {
 });
 
 if (verified.status === "completed") {
-  // payment successful â€” update your database
+  // payment successful — update your database
 }
 ```
 
@@ -102,7 +102,7 @@ All providers default to `sandbox: true`. Switch to production:
 ```ts
 gateway.use("bkash", {
   ...config,
-  sandbox: false, // â† production
+  sandbox: false, // ← production
 });
 ```
 
