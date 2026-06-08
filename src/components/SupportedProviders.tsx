@@ -63,6 +63,72 @@ const PROVIDERS: Provider[] = [
     installCmd: "npm i @foxses/pay-stripe",
     color: "#635BFF",
     logo: "/Stripe.png"
+  },
+  {
+    id: "paypal",
+    name: "PayPal",
+    region: "Global",
+    isGlobal: true,
+    status: "Stable",
+    description: "Orders API v2 — one-time & recurring payments, buyer protection.",
+    installCmd: "npm i @foxses/pay-paypal",
+    color: "#003087",
+    logo: "/paypal.png"
+  },
+  {
+    id: "binance",
+    name: "Binance Pay",
+    region: "Global",
+    isGlobal: true,
+    status: "Stable",
+    description: "Binance Pay API — crypto checkout, QR code, 700+ digital assets.",
+    installCmd: "npm i @foxses/pay-binance",
+    color: "#F0B90B",
+    logo: "/binance.png"
+  },
+  {
+    id: "payeer",
+    name: "Payeer",
+    region: "Global",
+    isGlobal: true,
+    status: "Stable",
+    description: "Payeer Merchant API — multi-currency wallet, instant settlements.",
+    installCmd: "npm i @foxses/pay-payeer",
+    color: "#2196F3",
+    logo: "/payeer.png"
+  },
+  {
+    id: "coinbase",
+    name: "Coinbase",
+    region: "Global",
+    isGlobal: true,
+    status: "Stable",
+    description: "Commerce API — Bitcoin, Ethereum, USDC & more, no account required.",
+    installCmd: "npm i @foxses/pay-coinbase",
+    color: "#0052FF",
+    logo: "/coinbase.webp"
+  },
+  {
+    id: "coinpayments",
+    name: "CoinPayments",
+    region: "Global",
+    isGlobal: true,
+    status: "Stable",
+    description: "IPN-based API — 2000+ altcoins, multi-coin wallet support.",
+    installCmd: "npm i @foxses/pay-coinpayments",
+    color: "#F0A500",
+    logo: "/coinpayments.jpg"
+  },
+  {
+    id: "cryptomus",
+    name: "Cryptomus",
+    region: "Global",
+    isGlobal: true,
+    status: "Stable",
+    description: "Crypto payment gateway — static addresses, recurring billing.",
+    installCmd: "npm i @foxses/pay-cryptomus",
+    color: "#00C853",
+    logo: "/cryptomus.png"
   }
 ];
 

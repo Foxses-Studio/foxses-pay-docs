@@ -19,7 +19,10 @@ const GATEWAYS_NODES: GatewayNode[] = [
   { id: "nagad", name: "Nagad", color: "#F15A22", logo: "/nagad.png", x: -200, y: 30, floatDelay: 1.4 },
   { id: "coinbase", name: "Coinbase", color: "#0052FF", logo: "/coinbase.webp", x: 200, y: 30, floatDelay: 2.1 },
   { id: "coinpayments", name: "Coinpayments", color: "#F0A500", logo: "/coinpayments.jpg", x: -120, y: 170, floatDelay: 2.8 },
-  { id: "cryptomus", name: "Cryptomus", color: "#00C853", logo: "/cryptomus.png", x: 120, y: 170, floatDelay: 3.5 }
+  { id: "cryptomus", name: "Cryptomus", color: "#00C853", logo: "/cryptomus.png", x: 120, y: 170, floatDelay: 3.5 },
+  { id: "binance", name: "Binance", color: "#F0B90B", logo: "/binance.png", x: -60, y: -200, floatDelay: 4.2 },
+  { id: "payeer", name: "Payeer", color: "#2196F3", logo: "/payeer.png", x: 60, y: -200, floatDelay: 4.9 },
+  { id: "paypal", name: "PayPal", color: "#003087", logo: "/paypal.png", x: 0, y: 220, floatDelay: 5.6 }
 ];
 
 export default function WhatIsFoxsesPay() {
