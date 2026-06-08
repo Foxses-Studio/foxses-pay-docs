@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
             "providers/nowpayments",
             "providers/coinpayments",
             "providers/cryptomus",
+            "providers/binance",
           ],
         },
       ],
