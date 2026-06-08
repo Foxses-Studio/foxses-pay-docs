@@ -24,6 +24,15 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
+          label: "Global",
+          collapsed: false,
+          items: [
+            "providers/paypal",
+            "providers/payeer",
+          ],
+        },
+        {
+          type: "category",
           label: "Crypto",
           collapsed: false,
           items: [
