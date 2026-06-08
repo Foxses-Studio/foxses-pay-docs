@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
             "providers/coinbase",
             "providers/nowpayments",
             "providers/coinpayments",
+            "providers/cryptomus",
           ],
         },
       ],
