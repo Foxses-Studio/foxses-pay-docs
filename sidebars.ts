@@ -11,10 +11,27 @@ const sidebars: SidebarsConfig = {
       label: "Providers",
       collapsed: false,
       items: [
-        "providers/bkash",
-        "providers/nagad",
-        "providers/sslcommerz",
-        "providers/stripe",
+        {
+          type: "category",
+          label: "Traditional",
+          collapsed: false,
+          items: [
+            "providers/bkash",
+            "providers/nagad",
+            "providers/sslcommerz",
+            "providers/stripe",
+          ],
+        },
+        {
+          type: "category",
+          label: "Crypto",
+          collapsed: false,
+          items: [
+            "providers/coinbase",
+            "providers/nowpayments",
+            "providers/coinpayments",
+          ],
+        },
       ],
     },
   ],
