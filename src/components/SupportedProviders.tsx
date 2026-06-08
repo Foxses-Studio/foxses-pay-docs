@@ -106,7 +106,7 @@ const PROVIDERS: Provider[] = [
     description: "Commerce API — Bitcoin, Ethereum, USDC & more, no account required.",
     installCmd: "npm i @foxses/pay-coinbase",
     color: "#0052FF",
-    logo: "/coinbase.webp"
+    logo: "/coinbase.png"
   },
   {
     id: "coinpayments",

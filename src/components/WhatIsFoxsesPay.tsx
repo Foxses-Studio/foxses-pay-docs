@@ -17,7 +17,7 @@ const GATEWAYS_NODES: GatewayNode[] = [
   { id: "stripe", name: "Stripe", color: "#635BFF", logo: "/Stripe.png", x: -180, y: -100, floatDelay: 0 },
   { id: "bkash", name: "bKash", color: "#E2136E", logo: "/bkash.jpg", x: 180, y: -100, floatDelay: 0.7 },
   { id: "nagad", name: "Nagad", color: "#F15A22", logo: "/nagad.png", x: -200, y: 30, floatDelay: 1.4 },
-  { id: "coinbase", name: "Coinbase", color: "#0052FF", logo: "/coinbase.webp", x: 200, y: 30, floatDelay: 2.1 },
+  { id: "coinbase", name: "Coinbase", color: "#0052FF", logo: "/coinbase.png", x: 200, y: 30, floatDelay: 2.1 },
   { id: "coinpayments", name: "Coinpayments", color: "#F0A500", logo: "/coinpayments.jpg", x: -120, y: 170, floatDelay: 2.8 },
   { id: "cryptomus", name: "Cryptomus", color: "#00C853", logo: "/cryptomus.png", x: 120, y: 170, floatDelay: 3.5 },
   { id: "binance", name: "Binance", color: "#F0B90B", logo: "/binance.png", x: -60, y: -200, floatDelay: 4.2 },
