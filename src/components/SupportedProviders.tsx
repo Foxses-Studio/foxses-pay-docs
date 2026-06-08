@@ -129,6 +129,34 @@ const PROVIDERS: Provider[] = [
     installCmd: "npm i @foxses/pay-cryptomus",
     color: "#00C853",
     logo: "/cryptomus.png"
+  },
+  {
+    id: "nowpayments",
+    name: "NOWPayments",
+    region: "Global",
+    isGlobal: true,
+    status: "Stable",
+    description: "Crypto payment API — accept 150+ cryptocurrencies with sandbox support.",
+    installCmd: "npm i @foxses/pay-nowpayments",
+    color: "#30B28C",
+    logo: (
+      <svg viewBox="0 0 100 100" style={{ width: "80%", height: "80%" }}>
+        <defs>
+          <linearGradient id="nowpayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#64ACFF" />
+            <stop offset="100%" stopColor="#30B28C" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M30 75 V25 L70 75 V25"
+          fill="none"
+          stroke="url(#nowpayGrad)"
+          strokeWidth="14"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    )
   }
 ];
 

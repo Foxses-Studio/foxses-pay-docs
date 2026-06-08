@@ -221,58 +221,7 @@ export default function WhatIsFoxsesPay() {
                 );
               })}
 
-              {/* Floating Payment Card */}
-              <motion.div
-                className={styles.paymentCard}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-              >
-                {/* Card shimmer background */}
-                <div className={styles.paymentCardShimmer} />
 
-                {/* Top row: chip + contactless */}
-                <div className={styles.paymentCardTop}>
-                  <div className={styles.paymentCardChip}>
-                    <div className={styles.chipLine} />
-                    <div className={styles.chipLine} />
-                    <div className={styles.chipLine} />
-                  </div>
-                  <div className={styles.paymentCardContactless}>
-                    <span>&#x29BE;</span>
-                  </div>
-                </div>
-
-                {/* Card number */}
-                <div className={styles.paymentCardNumber}>
-                  <span>••••</span>
-                  <span>••••</span>
-                  <span>••••</span>
-                  <span>4242</span>
-                </div>
-
-                {/* Bottom row: expiry + badge */}
-                <div className={styles.paymentCardBottom}>
-                  <div className={styles.paymentCardExpiry}>
-                    <span className={styles.paymentCardLabel}>EXPIRES</span>
-                    <span className={styles.paymentCardValue}>12 / 27</span>
-                  </div>
-                  <div className={styles.paymentSecureBadge}>
-                    <FiLock size={9} />
-                    <span>Secured</span>
-                  </div>
-                </div>
-
-                {/* Verified checkmark pill */}
-                <motion.div
-                  className={styles.paymentVerifiedPill}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 1.2, type: "spring", stiffness: 260, damping: 18 }}
-                >
-                  <FiCheck size={10} />
-                  <span>Payment Verified</span>
-                </motion.div>
-              </motion.div>
             </div>
           </div>
         </div>
