@@ -1,7 +1,7 @@
 <div align="center">
   <img src="static/img/foxses.png" alt="foxses-pay Logo" width="120" />
   <h1>foxses-pay-docs</h1>
-  <p><strong>Official documentation portal for Foxses Pay - The unified payment gateway SDK.</strong></p>
+  <p><strong>Official documentation portal for Foxses Pay — The unified payment gateway SDK.</strong></p>
 
   <a href="https://paydoc.foxses.com"><strong>Explore the Live Docs »</strong></a>
   
@@ -10,23 +10,42 @@
   
   [![NPM Version](https://img.shields.io/npm/v/@foxses/pay?color=blue&style=flat-square)](https://www.npmjs.com/package/@foxses/pay)
   [![GitHub License](https://img.shields.io/github/license/Foxses-Studio/foxses-pay?color=green&style=flat-square)](https://github.com/Foxses-Studio/foxses-pay/blob/main/LICENSE)
-  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Foxses-Studio/foxses-pay/pulls)
+  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Foxses-Studio/foxses-pay-docs/pulls)
+  [![Docusaurus](https://img.shields.io/badge/Built%20with-Docusaurus%203-blue?style=flat-square&logo=docusaurus)](https://docusaurus.io)
 </div>
 
 ---
 
 ## 📖 About Foxses Pay
 
-**Foxses Pay** (`foxses-pay`) is a unified Node.js / TypeScript payment gateway integration SDK. It provides a simple, consistent API to handle multiple payment methods across different regions, specifically focusing on Bangladeshi payment methods alongside global ones.
+**Foxses Pay** (`@foxses/pay`) is a unified Node.js / TypeScript payment gateway integration SDK. It provides a simple, consistent API to handle multiple payment methods across different regions — from Bangladeshi local gateways to global crypto and card processors.
 
 This repository (`foxses-pay-docs`) contains the source code for the official documentation website built using **Docusaurus 3**, enhanced with custom React components, smooth Framer Motion animations, and a sleek dark-themed responsive design.
 
-### Supported Payment Gateways in Foxses Pay:
-*   🇧🇩 **bKash** (Tokenized Checkout)
-*   🇧🇩 **Nagad**
-*   🇧🇩 **SSLCommerz**
-*   🌐 **Stripe**
-*   *More coming soon...*
+### ✅ Supported Payment Gateways
+
+#### 🇧🇩 Bangladeshi Gateways
+| Gateway | Description |
+| :--- | :--- |
+| **bKash** | Tokenized checkout integration |
+| **Nagad** | Merchant payment API |
+| **SSLCommerz** | Multi-method local gateway |
+
+#### 🌐 Global Card & Digital Wallets
+| Gateway | Description |
+| :--- | :--- |
+| **Stripe** | Global card & payment intents |
+| **PayPal** | PayPal order & capture flow |
+| **Payeer** | Digital wallet payments |
+
+#### ₿ Crypto Gateways
+| Gateway | Description |
+| :--- | :--- |
+| **Binance Pay** | BNB/crypto checkout |
+| **Coinbase Commerce** | Multi-crypto invoices |
+| **CoinPayments** | 2000+ coins support |
+| **Cryptomus** | Crypto payment gateway |
+| **NOWPayments** | Non-custodial crypto payments |
 
 ---
 
@@ -35,7 +54,6 @@ This repository (`foxses-pay-docs`) contains the source code for the official do
 To run this documentation website locally, follow these steps:
 
 ### 1. Clone & Install Dependencies
-Since this project uses `npm` for dependency management:
 
 ```bash
 # Clone the repository
@@ -71,16 +89,33 @@ npm run serve
 
 Here is a quick overview of the key directories in this repository:
 
-*   📂 **`docs/`** — All markdown/MDX files containing the actual documentation text.
-    *   `getting-started.md` — Installation and setup guide for the SDK.
-    *   `api-reference.md` — Detailed API signatures.
-    *   `error-handling.md` — Guide on dealing with gateway errors.
-    *   📂 `providers/` — Provider-specific instructions (`bkash.md`, `nagad.md`, `sslcommerz.md`, `stripe.md`).
-*   📂 **`src/`** — React components, pages, custom styling.
-    *   `components/` — Custom visual enhancements like `Particles`, `DecryptedText`, `SupportedProviders`.
-    *   `pages/` — Landing page and other standalone views.
-*   📄 **`docusaurus.config.ts`** — Main site configuration (navigation links, site meta, themes).
-*   📄 **`sidebars.ts`** — Controls the ordering and structure of the sidebar navigation.
+```
+foxses-pay-docs/
+├── docs/
+│   ├── getting-started.md      # Installation & setup guide
+│   ├── api-reference.md        # Full API signatures
+│   ├── error-handling.md       # Gateway error handling guide
+│   ├── design-guidelines.md    # UI/UX design notes
+│   └── providers/              # Provider-specific guides
+│       ├── bkash.md
+│       ├── nagad.md
+│       ├── sslcommerz.md
+│       ├── stripe.md
+│       ├── paypal.md
+│       ├── payeer.md
+│       ├── binance.md
+│       ├── coinbase.md
+│       ├── coinpayments.md
+│       ├── cryptomus.md
+│       └── nowpayments.md
+├── src/
+│   ├── components/             # Custom visual components (Particles, DecryptedText, etc.)
+│   ├── pages/                  # Landing page & standalone views
+│   └── css/custom.css          # Global styles & theme overrides
+├── static/                     # Static assets (images, icons)
+├── docusaurus.config.ts        # Main site configuration
+└── sidebars.ts                 # Sidebar navigation structure
+```
 
 ---
 
@@ -90,11 +125,12 @@ Below is a list of commands defined in `package.json`:
 
 | Command | Description |
 | :--- | :--- |
-| `npm run start` | Run the local dev server. |
+| `npm run start` | Run the local dev server at `localhost:3000`. |
 | `npm run build` | Build the site for production. |
 | `npm run serve` | Locally preview the production build. |
-| `npm run typecheck` | Run TypeScript type checking compiler. |
+| `npm run typecheck` | Run TypeScript type checking. |
 | `npm run clear` | Clear Docusaurus cache/build directories. |
+| `npm run deploy` | Deploy to GitHub Pages. |
 
 ---
 
